@@ -7,5 +7,5 @@ class Solution(object):
         """
         newdict = dict((i,j) for j,i in enumerate(arr2))
         s=len(newdict)
-        newarr = sorted(arr1,key=lambda n:newdict[n] if n in newdict else s+n)    
-        return newarr
+        arr1.sort(key=lambda n:newdict[n] if n in newdict else s+n)    
+        return arr1
