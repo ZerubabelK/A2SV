@@ -3,10 +3,6 @@ class Solution:
         maxLength = 0
         i = 0
         j = 0
-        if len(s) == 1:
-            return 1
-        elif len(s) == 0:
-            return 0
         while j < len(s):
             if s[j] in set(s[i:j]):
                 i += 1
