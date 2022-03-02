@@ -14,6 +14,7 @@ class Solution:
                 return d
             
             return max(self.depth(root.left, d + 1), self.depth(root.right, d + 1))
+        
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         
         if not root:
