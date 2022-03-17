@@ -18,4 +18,5 @@ class Solution:
             else:
                 res = mid
                 right = mid - 1
+                
         return res
