@@ -1,9 +1,8 @@
 class Solution:
     def smallestDivisor(self, nums: List[int], threshold: int) -> int:
         ans = 0
-        n = sum(nums)
         left = 1
-        right = n
+        right = 10**6
         
         while left <= right:
             mid = (left + right) // 2
