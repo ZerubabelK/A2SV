@@ -12,6 +12,7 @@ class Solution:
             for j in range(i+1, len(nums)):
                 if nums[j] > nums[i]:
                     depth = max(dp(j), depth)
+                    
             memo[i] = depth + 1
             return depth + 1
         
