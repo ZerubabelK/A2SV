@@ -8,8 +8,6 @@ class Solution:
                 continue
             
             if stack[-1][1] >= interval[0]:
-                while stack and stack[-1][0] > interval[0]:
-                    stack.pop()
                 stack[-1][0] = min(stack[-1][0], interval[0])
                 stack[-1][1] = max(stack[-1][1], interval[1])
             else:
