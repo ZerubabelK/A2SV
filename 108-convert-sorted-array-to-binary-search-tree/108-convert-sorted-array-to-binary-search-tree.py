@@ -18,7 +18,3 @@ class Solution:
             curr.left, curr.right = leftChild, rightChild
             return curr
         return func()
-'''
- [-10,-3,0,5,9]
- 
-'''
