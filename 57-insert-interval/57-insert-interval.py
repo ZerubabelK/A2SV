@@ -1,11 +1,14 @@
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         flag = True
-        for i in range(len(intervals)):
-            if intervals[i][0] >= newInterval[0]:
-                    intervals.insert(i, newInterval)
-                    flag = False
-                    break
+        intervals.append(newInterval)
+        for i in range(len(intervals)-2, -1, -1):
+            if intervals[i][0] >= intervals[i + 1][0]:
+                intervals[i][0], intervals[i + 1][0] = intervals[i + 1][0], intervals[i][0]
+                intervals[i][1], intervals[i + 1][1] = intervals[i + 1][1], intervals[i][1]
+            else:
+                break
+                
         if flag:
             intervals.append(newInterval)
             
@@ -25,8 +28,5 @@ class Solution:
                 
             else:
                 stack.append(interval)
-                
-        # if not stack:
-        #     stack.append(newInterval)
             
         return stack
