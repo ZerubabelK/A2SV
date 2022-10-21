@@ -1,5 +1,9 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        memo = {}
+        return self.topDown(text1, text2, memo, 0, 0)
+    
+    def bottomUp(self, text1, text2):
         n, m = len(text1), len(text2)
         dp = [[0 for i in range(n+1)] for j in range(m+1)]
         
@@ -10,3 +14,16 @@ class Solution:
                 else:
                     dp[i][j] = max(dp[i-1][j], dp[i][j-1])
         return dp[m][n]
+    
+    def topDown(self, text1, text2, memo, i, j):
+        if i >= len(text1) or j >= len(text2):
+            return 0
+        state = (i, j)
+        if state in memo:
+            return memo[state]
+        if text1[i] == text2[j]:
+            memo[state] = 1 + self.topDown(text1, text2, memo, i+1, j+1)
+        else:
+            memo[state] = max(self.topDown(text1, text2, memo, i, j+1), self.topDown(text1, text2, memo, i+1, j))
+            
+        return memo[state]
