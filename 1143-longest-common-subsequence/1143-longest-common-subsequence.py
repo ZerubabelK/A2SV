@@ -1,7 +1,7 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         memo = {}
-        return self.topDown(text1, text2, memo, 0, 0)
+        return self.bottomUp(text1, text2)
     
     def bottomUp(self, text1, text2):
         n, m = len(text1), len(text2)
