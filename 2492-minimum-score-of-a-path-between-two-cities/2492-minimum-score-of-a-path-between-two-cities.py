@@ -11,17 +11,14 @@ class Solution:
         def union(node1, node2, distance):
             p_node1 = find(node1)
             p_node2 = find(node2)
-            if p_node1 != p_node2:
-                if rank[p_node1] > rank[p_node2]:
-                    parent[p_node2][0] = p_node1
-                    parent[p_node1][1] = min(parent[p_node1][1], parent[p_node2][1], distance)
-                    rank[p_node1] += rank[p_node2]
-                else:
-                    parent[p_node1][0] = p_node2
-                    parent[p_node2][1] = min(parent[p_node2][1],parent[p_node1][1], distance)
-                    rank[p_node2] += rank[p_node1]
+            if rank[p_node1] > rank[p_node2]:
+                parent[p_node2][0] = p_node1
+                parent[p_node1][1] = min(parent[p_node1][1], parent[p_node2][1], distance)
+                rank[p_node1] += rank[p_node2]
             else:
-                parent[p_node1][1] = min(parent[p_node1][1], distance)
+                parent[p_node1][0] = p_node2
+                parent[p_node2][1] = min(parent[p_node2][1],parent[p_node1][1], distance)
+                rank[p_node2] += rank[p_node1]
         for src, dst, dis in roads:
             union(src-1, dst-1, dis)
         
